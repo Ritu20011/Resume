@@ -1,0 +1,106 @@
+$black: #000;
+$white: #fff;
+$red: #f00;
+
+$light-theme: ( // toggler
+    default-color: #000,
+    invert-color: #fff,
+    primary-color: #B0EBB4,
+    secondary-color: #BFF6C3,
+    light-color: #E0FBE2,
+    dark-color: #ACE1AF,
+);
+
+$dark-theme: ( // toggler
+    default-color: #000,
+    primary-color: #B0EBB4,
+    secondary-color: #BFF6C3,
+    light-color: #E0FBE2,
+    dark-color: #ACE1AF,
+);
+
+// $dark-theme: (light-color: #ffa958,
+//     dark-color: #fd4800,
+// );
+// Mixin to generate CSS custom properties
+@mixin theme-variables($theme) {
+    --default-color: #{map-get($theme, default-color)};
+    --primary-color: #{map-get($theme, primary-color)};
+    --secondary-color: #{map-get($theme, secondary-color)};
+    --light-color: #{map-get($theme, light-color)};
+    --dark-color: #{map-get($theme, dark-color)};
+}
+
+// Apply the light theme by default
+:root {
+    @include theme-variables($light-theme);
+}
+
+// Apply the dark theme when the body has the class "dark"
+body .back.dark {
+    @include theme-variables($dark-theme);
+}
+
+
+@mixin flex($jus: center, $ali: center) {
+    display: flex;
+    justify-content: $jus;
+    align-items: $ali;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-size: 16px;
+}
+img {
+    max-width: 100%;
+}
+
+.primaryBack {
+    background-color: var(--primary-color);
+}
+
+.secondaryBack {
+    background-color: var(--invert-color);
+}
+.flex{
+    @include flex();
+}
+.primary-btn{
+    
+}
+
+// navigation
+.topNav,
+.leftNav,
+.rightNav,
+.mainNav {
+    @include flex(space-between);
+}
+
+.topNav {
+    a {
+        text-decoration: none;
+        color: var(--default-color);
+        font-weight: 700;
+    }
+}
+
+.mainNav {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+        a {
+            // text-decoration: none;
+            // color: var(--default-color);
+            // font-weight: 700;
+        }
+    }
+}
