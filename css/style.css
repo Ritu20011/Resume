@@ -1,5 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
+  --font-70: 70px;
+  --font-60: 60px;
+  --font-50: 50px;
+  --font-35: 35px;
+  --font-30: 30px;
+  --font-25: 25px;
+  --font-20: 20px;
+  --font-18: 18px;
+}
+
+@media (max-width: 992px) {
+  :root {
+    --font-70: 50px;
+    --font-60: 40px;
+    --font-50: 40px;
+    --font-35: 30px;
+    --font-30: 25px;
+    --font-25: 22px;
+    --font-20: 20px;
+    --font-18: 18px;
+  }
+}
+:root {
   --default-color: #000;
   --invert-color: #fff;
   --primary-color: #B0EBB4;
@@ -24,7 +47,7 @@ body .back.dark {
 
 body {
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 18px;
+  font-size: var(--font-18);
   color: var(--default-color);
 }
 
@@ -57,7 +80,7 @@ a {
 
 .head {
   font-weight: 700;
-  font-size: 35px !important;
+  font-size: var(--font-35) !important;
   margin-bottom: 0;
 }
 
@@ -69,7 +92,7 @@ h1,
           background-clip: text;
   width: -moz-fit-content;
   width: fit-content;
-  font-size: 60px;
+  font-size: var(--font-60);
 }
 
 h2,
@@ -80,7 +103,7 @@ h2,
           background-clip: text;
   width: -moz-fit-content;
   width: fit-content;
-  font-size: 50px;
+  font-size: var(--font-50);
   margin-bottom: 30px;
 }
 h2 .ico,
@@ -107,11 +130,12 @@ h2 .ico,
   font-weight: 700;
 }
 .primary-btn .ico {
-  font-size: 30px;
+  font-size: var(--font-30);
   transition: all 0.3s ease-in-out;
 }
 .primary-btn:hover {
   background-position: right;
+  color: var(--default-color) !important;
 }
 .primary-btn:hover .ico {
   transform: rotate(330deg);
@@ -188,7 +212,7 @@ h2 .ico,
   -moz-column-gap: 20px;
        column-gap: 20px;
   flex-wrap: wrap;
-  font-size: 20px;
+  font-size: var(--font-20);
 }
 .social-btn::after {
   content: "";
@@ -220,6 +244,33 @@ h2 .ico,
   padding-bottom: 50px;
 }
 
+header {
+  padding: 20px 0 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+header.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0 10px;
+  background-color: var(--invert-color);
+  box-shadow: 0 0 10px 0 var(--default-color);
+  z-index: 999;
+}
+header.active .logo {
+  width: 50px !important;
+}
+
+.logo {
+  transition: all 0.3s ease-in-out;
+}
+
+.toggler {
+  display: none;
+}
+
 .topNav,
 .leftNav,
 .rightNav,
@@ -231,15 +282,22 @@ h2 .ico,
   -moz-column-gap: 20px;
        column-gap: 20px;
   flex-wrap: wrap;
-  -moz-column-gap: 40px;
-       column-gap: 40px;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
 }
 
 .topNav a {
   text-decoration: none;
   color: var(--default-color);
   font-weight: 700;
-  font-size: 18px;
+  font-size: var(--font-18);
+  transition: all 0.3s ease-in-out;
+}
+.topNav a:hover {
+  color: var(--dark-color);
+}
+.topNav a.active {
+  color: var(--dark-color);
 }
 
 .mainNav {
@@ -247,6 +305,24 @@ h2 .ico,
   padding: 0;
   list-style-type: none;
 }
+.mainNav li a {
+  position: relative;
+  padding: 5px;
+}
+
+.actDetect {
+  position: relative;
+}
+.actDetect .navActive {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, var(--dark-color), var(--default-color));
+  transition: all 0.3s ease-in-out;
+  transition-timing-function: linear;
+}
+
 .bannerCont {
   max-width: 500px;
   display: flex;
@@ -259,7 +335,7 @@ h2 .ico,
   flex-direction: column;
 }
 .bannerCont p {
-  font-size: 20px;
+  font-size: var(--font-20);
 }
 .bannerCont .flex {
   justify-content: left;
@@ -296,12 +372,12 @@ h2 .ico,
   flex-wrap: wrap;
 }
 .experienceDiv .countDiv {
-  font-size: 70px;
+  font-size: var(--font-70);
 }
 .experienceDiv p {
   margin-bottom: 0;
   font-weight: 700;
-  font-size: 18px;
+  font-size: var(--font-18);
 }
 
 .servDiv {
@@ -335,6 +411,8 @@ h2 .ico,
           backdrop-filter: blur(15px);
   position: relative;
   cursor: pointer;
+  max-width: 550px;
+  margin: auto;
 }
 .work .primary-btn {
   position: absolute;
@@ -422,12 +500,12 @@ h2 .ico,
 .singleSkill .iconDiv .percent {
   color: var(--dark-color);
   font-weight: 700;
-  font-size: 30px;
+  font-size: var(--font-30);
   margin-bottom: 0;
 }
 .singleSkill .skillName {
   color: var(--dark-color);
-  font-size: 20px;
+  font-size: var(--font-20);
 }
 
 .ctnctFrmDiv {
@@ -471,6 +549,7 @@ textarea:focus {
   -moz-column-gap: 20px;
        column-gap: 20px;
   flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .iconFlex .ico {
   display: flex;
@@ -483,9 +562,10 @@ textarea:focus {
   background-image: linear-gradient(-45deg, var(--default-color), var(--dark-color));
   padding: 10px 10px;
   width: 50px;
+  min-width: 50px;
   height: 50px;
   border-radius: 50%;
-  font-size: 25px;
+  font-size: var(--font-25);
   color: var(--invert-color);
 }
 .iconFlex p {
@@ -493,7 +573,7 @@ textarea:focus {
 }
 .iconFlex a {
   color: var(--default-color);
-  font-size: 25px;
+  font-size: var(--font-25);
   font-weight: 700;
   transition: all 0.3s ease-in-out;
 }
@@ -512,18 +592,153 @@ textarea:focus {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  font-size: 20px;
+  font-size: var(--font-20);
   font-weight: 700;
   margin: 30px 0;
-  -moz-column-gap: 50px;
-       column-gap: 50px;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
 }
 .footNav a {
   color: var(--default-color);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  padding: 0 5px;
+}
+.footNav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, var(--dark-color), var(--default-color));
+  transition: all 0.3s ease-in-out;
+}
+.footNav a:hover {
+  color: var(--dark-color);
+}
+.footNav a:hover::after {
+  width: 100%;
 }
 
 .copyright {
   text-align: center;
   margin-bottom: 0;
   color: var(--dark-color);
+}
+
+@media (max-width: 992px) {
+  .panel {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .toggler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    -moz-column-gap: 20px;
+         column-gap: 20px;
+    flex-wrap: wrap;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    z-index: 999;
+    transition: all 0.3s ease-in-out;
+  }
+  .toggler .toggle {
+    position: relative;
+    width: 30px;
+    height: 3px;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, var(--dark-color), var(--default-color));
+    margin-top: 14px;
+    transition: all 0.3s ease-in-out;
+  }
+  .toggler .toggle::before, .toggler .toggle::after {
+    content: "";
+    width: 20px;
+    height: 3px;
+    display: block;
+    background-image: linear-gradient(to right, var(--dark-color), var(--default-color));
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    top: -7px;
+  }
+  .toggler .toggle::after {
+    width: 35px;
+    top: -14px;
+    transition: all 0.3s ease-in-out;
+  }
+  .toggler:hover {
+    background-image: linear-gradient(to right, var(--invert-color), var(--primary-color));
+  }
+  .toggler.active .toggle {
+    width: 30px;
+    rotate: 40deg;
+    margin: 0;
+    transform-origin: center;
+  }
+  .toggler.active .toggle::before {
+    display: none;
+  }
+  .toggler.active .toggle::after {
+    width: 30px;
+    rotate: 100deg;
+    margin: 0;
+    top: 0;
+    transform-origin: center;
+  }
+  .workDiv {
+    padding-top: 0px;
+  }
+  .navActive {
+    display: none;
+  }
+  .actDetect {
+    position: fixed;
+    width: 350px;
+    height: 100vh;
+    top: 0;
+    right: -350px;
+    background: var(--light-color);
+    z-index: 999;
+    padding: 70px 0px 30px;
+    box-shadow: 0 0 10px 0 var(--default-color);
+    transition: all 0.3s ease-in-out;
+  }
+  .actDetect.active {
+    right: 0;
+  }
+  .mainNav {
+    display: block;
+  }
+  .mainNav li a {
+    width: 100%;
+    padding: 10px 30px;
+    display: block;
+  }
+  .mainNav li a.active {
+    background-color: var(--invert-color);
+  }
+  .mainNav li a:hover {
+    background-color: var(--primary-color);
+  }
+}
+@media (max-width: 767px) {
+  .bannerCont {
+    margin: auto;
+  }
+}
+@media (max-width: 575px) {
+  .experienceDiv {
+    justify-content: center;
+    row-gap: 30px;
+    -moz-column-gap: 50px;
+         column-gap: 50px;
+  }
+  .topMail {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */

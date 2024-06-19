@@ -19,50 +19,60 @@
     <!-- header start -->
     <section class="primaryBack">
         <header>
-            <div class="container topNav">
+            <div class="container-lg topNav">
                 <div class="leftNav">
-                    <img src="images/logo.png" alt="logo" width="150px" height="" class="logo">
-                    <a href="mailto:ritu.basak01@gmail.com">ritu.basak01@gmail.com</a>
+                    <img src="images/logo.png" alt="logo" width="70px" height="" class="logo">
+                    <a href="mailto:ritu.basak01@gmail.com" class="topMail">ritu.basak01@gmail.com</a>
                 </div>
                 <div class="rightNav">
-                    <nav>
+                    <nav class="actDetect">
                         <ul class="mainNav">
                             <li><a href="#service">Services</a></li>
-                            <li><a href="#works">Works</a></li>
+                            <li><a href="#work">Works</a></li>
                             <li><a href="#resume">Resume</a></li>
-                            <li><a href="#skills">Skills</a></li>
-                            <li><a href="#contacts">Contacts</a></li>
+                            <li><a href="#skill">Skills</a></li>
+                            <li><a href="#contact">Contacts</a></li>
                         </ul>
+                        <span class="navActive"></span>
                     </nav>
                     <a href="#" class="primary-btn">Hire Me!</a>
+                    <span class="toggler">
+                        <div class="toggle"></div>
+                    </span>
                 </div>
             </div>
         </header>
-        <div class="container">
-            <div class="row panel gy-5">
-                <div class="col-lg-7">
+
+        <!-- banner start -->
+
+        <div class="container-lg">
+            <div class="row panel gy-5 flex-md-row-reverse">
+                <div class="col-md-5">
+                    <img src="images/pic.jpg" alt="my-pic" class="bannerImg">
+                </div>
+                <div class="col-md-7">
                     <div class="bannerCont">
                         <p class="head">
-                            I am Gerold
+                            I am Ritu
                         </p>
                         <h1>Web Developer +<br>
                             UX Designer</h1>
                         <p>I break down complex user experinece problems to create integritiy focussed solutions that
                             connect billions of people</p>
                         <div class="flex">
-                            <a href="#" class="secondary-btn">
+                            <a href="#" class="secondary-btn mx-auto">
                                 Download CV <i class="fa-solid fa-download ms-3"></i>
                             </a>
-                            <a href="#" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
-                            <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#" class="social-btn"><i class="fa-brands fa-github"></i></a>
+                            <div class="flex mx-auto">
+                                <a href="#" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#" class="social-btn"><i class="fa-brands fa-github"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5">
-                    <img src="images/pic.jpg" alt="my-pic" class="bannerImg">
-                </div>
+
             </div>
 
             <div class="experienceDiv panel-bot">
@@ -98,8 +108,11 @@
         </div>
     </section>
     <main>
-        <section class="secondaryBack">
-            <div class="container panel">
+
+        <!-- services start -->
+
+        <section class="secondaryBack" id="service">
+            <div class="container-lg panel">
                 <h2 class="mx-auto">My Quality Services</h2>
                 <p class="text-center">We put your ideas and thus your wishes in the form of a unique web project that
                     inspires you and you customers.</p>
@@ -152,9 +165,12 @@
                 </div>
             </div>
         </section>
-        <section>
+
+        <!-- works start -->
+
+        <section id="work">
             <div class="primaryBack">
-                <div class="container panel">
+                <div class="container-lg panel">
                     <h2 class="mx-auto">My Recent Works</h2>
                     <p class="text-center">We put your ideas and thus your wishes in the form of a unique web project
                         that
@@ -220,9 +236,12 @@
                 </div>
             </div>
         </section>
-        <section>
+
+        <!-- resume start -->
+
+        <section id="resume">
             <div class="secondaryBack">
-                <div class="container panel">
+                <div class="container-lg panel">
                     <div class="row gy-5">
                         <div class="col-md-6">
                             <h2><i class="fa-solid fa-graduation-cap ico"></i> My Experience</h2>
@@ -279,9 +298,12 @@
                 </div>
             </div>
         </section>
-        <section>
+
+        <!-- skill start -->
+
+        <section id="skill">
             <div class="primaryBack">
-                <div class="container panel">
+                <div class="container-lg panel">
                     <h2 class="mx-auto">My Skills</h2>
                     <p class="text-center">We put your ideas and thus your wishes in the form of a unique web project
                         that inspires you and you customers.</p>
@@ -297,37 +319,13 @@
                 </div>
             </div>
         </section>
-        <section>
-            <div class="secondaryBack">
-                <div class="container panel">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-md-6 ctnctFrmDiv">
-                            <h2>Let’s work together!</h2>
-                            <p>I design and code beautifully simple things and i love what i do.
-                                Just simple
-                                like that!</p>
-                            <form class="cntctFrm">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="text" placeholder="First Name" id="fname">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" placeholder="Last Name" id="lname">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="email" placeholder="Email Address" id="email">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" placeholder="Phone number" id="num">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <textarea placeholder="Meassage" id="mess"></textarea>
-                                    </div>
-                                </div>
 
-                                <input type="submit" id="emailButton" class="primary-btn">
-                            </form>
-                        </div>
+        <!-- contact start -->
+
+        <section id="contact">
+            <div class="secondaryBack">
+                <div class="container-lg panel">
+                    <div class="row justify-content-between align-items-center w-100 mx-auto gy-5 flex-md-row-reverse">
                         <div class="col-md-5 iconFlexDiv">
                             <div class="iconFlex">
                                 <div class="ico">
@@ -357,6 +355,36 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6 ctnctFrmDiv">
+                            <h2>Let’s work together!</h2>
+                            <p>I design and code beautifully simple things and i love what i do.
+                                Just simple
+                                like that!</p>
+                            <form class="cntctFrm">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="First Name" id="fname" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Last Name" id="lname" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="email" placeholder="Email Address" id="email" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Phone number" id="num"
+                                            title="Please Put the Phone Number" required>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea placeholder="Meassage" id="mess"></textarea>
+                                    </div>
+                                </div>
+
+                                <input type="submit" class="primary-btn" id="emailButton">
+
+                            </form>
+                        </div>
+                        
                     </div>
 
 
@@ -365,17 +393,20 @@
             </div>
         </section>
     </main>
+
+    <!-- footer start -->
+
     <footer>
         <section>
             <div class="primaryBack">
-                <div class="container panel">
-                    <img src="images/logo.png" alt="logo" width="150px" class="mx-auto">
+                <div class="container-lg panel">
+                    <img src="images/logo.png" alt="logo" width="100px" class="mx-auto">
                     <ul class="footNav">
                         <li><a href="#service">Services</a></li>
-                        <li><a href="#works">Works</a></li>
+                        <li><a href="#work">Works</a></li>
                         <li><a href="#resume">Resume</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#contacts">Contacts</a></li>
+                        <li><a href="#skill">Skills</a></li>
+                        <li><a href="#contact">Contacts</a></li>
                     </ul>
                     <p class="copyright">
                         © 2024 All rights reserved by <strong>Ritu</strong>
