@@ -296,7 +296,7 @@ $(document).ready(function () {
                 owner,
                 repo
             }) => {
-                const token = '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'; // Optional for public repos
+                const token = $RESUMETOKEN'; // Optional for public repos
                 const githubPagesUrl = `https://${owner.toLowerCase()}.github.io/${repo}/`;
 
                 fetchRepoLanguages(owner, repo, token)
