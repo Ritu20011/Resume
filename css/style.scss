@@ -39,13 +39,41 @@ $light-theme: ( // toggler
     dark-color: #3D9443,
 );
 
+// $light-theme: ( // toggler
+//     default-color: #000,
+//     invert-color: #fff,
+//     primary-color: #b9f5f5,
+//     secondary-color: #c0f8f8,
+//     light-color: #e3fdfd,
+//     dark-color: #4bdfdf,
+// );
+
+// $light-theme: ( // toggler
+//     default-color: #000,
+//     invert-color: #fff,
+//     primary-color: #FFE6E6,
+//     secondary-color: #E1AFD1,
+//     light-color: #FFE6E6,
+//     dark-color: #7469B6,
+// );
+
 $dark-theme: ( // toggler
-    default-color: #000,
-    primary-color: #B0EBB4,
-    secondary-color: #BFF6C3,
-    light-color: #E0FBE2,
-    dark-color: #88b88a,
+    default-color: #fff,
+    invert-color: #000,
+    primary-color: #618383,
+    secondary-color: #E3F4F4,
+    light-color: #097474,
+    dark-color: #b3f8f8,
 );
+
+// $dark-theme: ( // toggler
+//     default-color: #fff,
+//     invert-color: #000,
+//     primary-color: #FFBF78,
+//     secondary-color: #FFEEA9,
+//     light-color: #FF9855,
+//     dark-color: #FBFE7E,
+// );
 
 // $dark-theme: (light-color: #ffa958,
 //     dark-color: #fd4800,
@@ -66,7 +94,7 @@ $dark-theme: ( // toggler
 }
 
 // Apply the dark theme when the body has the class "dark"
-body .back.dark {
+body.dark {
     @include theme-variables($dark-theme);
 }
 
@@ -93,6 +121,10 @@ body {
     font-family: "Roboto Condensed", sans-serif;
     font-size: var(--font-18);
     color: var(--default-color);
+    &.active{
+        position: fixed;
+        width: 100%;
+    }
 }
 
 img {
@@ -101,7 +133,12 @@ img {
 }
 
 a {
+    color: var(--dark-color);
     text-decoration: none;
+
+    &:hover {
+        color: var(--primary-color);
+    }
 }
 
 .primaryBack {
@@ -357,13 +394,14 @@ header.active {
 
 .actDetect {
     position: relative;
+    overflow: auto;
 
     .navActive {
         position: absolute;
         // bottom: 0;
         left: 0;
         width: 0;
-        height: 2px;
+        height: 5px;
         background-image: linear-gradient(to right, var(--dark-color), var(--default-color));
         @include trans();
         transition-timing-function: linear;
@@ -423,13 +461,26 @@ header.active {
 }
 
 .servDiv {
-    padding: 20px 0;
+    margin: 40px 0;
+    position: relative;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 0;
+        background-image: linear-gradient(var(--primary-color) 80%, var(--dark-color));
+        z-index: 0;
+        @include trans();
+    }
 }
 
 .servFlex {
     justify-content: space-around;
     padding: 30px 0;
     border-bottom: solid 1px var(--dark-color);
+    position: relative;
+    z-index: 1;
 
     .num {
         color: var(--dark-color);
@@ -457,6 +508,10 @@ header.active {
     cursor: pointer;
     max-width: 550px;
     margin: auto;
+
+    .content {
+        display: none;
+    }
 
     .primary-btn {
         position: absolute;
@@ -501,6 +556,7 @@ header.active {
         object-position: top;
         @include trans();
     }
+
 }
 
 .expDiv {
@@ -651,9 +707,87 @@ textarea:focus {
     color: var(--dark-color);
 }
 
+.custModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9991;
+    backdrop-filter: blur(5px);
+    padding: 100px 0 0;
+    opacity: 0;
+    visibility: hidden;
+    @include trans();
 
+    .content {
+        background-color: var(--invert-color);
+        padding: 30px;
+        border-radius: 30px;
+        max-height: 100%;
+        overflow: auto;
+        box-shadow: 0 0 10px 2px var(--default-color);
+    }
 
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
 
+    .closeModal {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 15px;
+        font-size: 30px;
+        background-image: linear-gradient(to right, var(--invert-color), var(--dark-color), var(--invert-color));
+        background-size: 200%;
+        background-position: left;
+        border-radius: 15px;
+        cursor: pointer;
+        @include trans();
+
+        &:hover {
+            background-position: right;
+        }
+    }
+}
+
+.prtSwiper {
+    width: 80% !important;
+    max-width: 400px;
+    margin: auto;
+
+    .swiper-slide {
+        border-radius: 30px;
+        box-shadow: 0 0 10px 2px var(--default-color);
+    }
+
+    img {
+        width: 100%;
+        aspect-ratio: 1/1.5;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.prtFlex {
+    overflow: auto;
+    height: calc(100vh - 130px);
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.fixedEle{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.scrollTop{
+
+}
 
 
 // media start
@@ -702,9 +836,10 @@ textarea:focus {
             }
         }
 
-        &:hover{
+        &:hover {
             background-image: linear-gradient(to right, var(--invert-color), var(--primary-color));
         }
+
         &.active {
             .toggle {
                 width: 30px;
@@ -747,7 +882,8 @@ textarea:focus {
         box-shadow: 0 0 10px 0 var(--default-color);
         @include trans();
     }
-    .actDetect.active{
+
+    .actDetect.active {
         right: 0;
     }
 
@@ -759,13 +895,22 @@ textarea:focus {
                 width: 100%;
                 padding: 10px 30px;
                 display: block;
-                &.active{
+
+                &.active {
                     background-color: var(--invert-color);
                 }
-                &:hover{
+
+                &:hover {
                     background-color: var(--primary-color);
                 }
             }
+        }
+    }
+
+    .custModal {
+        .content {
+            max-height: none;
+            margin-top: 50px;
         }
     }
 }
@@ -782,7 +927,8 @@ textarea:focus {
         row-gap: 30px;
         column-gap: 50px;
     }
-    .topMail{
+
+    .topMail {
         display: none;
     }
 }

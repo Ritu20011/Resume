@@ -31,13 +31,13 @@
   --dark-color: #3D9443;
 }
 
-body .back.dark {
-  --default-color: #000;
-  --invert-color: ;
-  --primary-color: #B0EBB4;
-  --secondary-color: #BFF6C3;
-  --light-color: #E0FBE2;
-  --dark-color: #88b88a;
+body.dark {
+  --default-color: #fff;
+  --invert-color: #000;
+  --primary-color: #618383;
+  --secondary-color: #E3F4F4;
+  --light-color: #097474;
+  --dark-color: #b3f8f8;
 }
 
 * {
@@ -50,6 +50,10 @@ body {
   font-size: var(--font-18);
   color: var(--default-color);
 }
+body.active {
+  position: fixed;
+  width: 100%;
+}
 
 img {
   display: block;
@@ -57,7 +61,11 @@ img {
 }
 
 a {
+  color: var(--dark-color);
   text-decoration: none;
+}
+a:hover {
+  color: var(--primary-color);
 }
 
 .primaryBack {
@@ -312,12 +320,13 @@ header.active .logo {
 
 .actDetect {
   position: relative;
+  overflow: auto;
 }
 .actDetect .navActive {
   position: absolute;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 5px;
   background-image: linear-gradient(to right, var(--dark-color), var(--default-color));
   transition: all 0.3s ease-in-out;
   transition-timing-function: linear;
@@ -381,13 +390,25 @@ header.active .logo {
 }
 
 .servDiv {
-  padding: 20px 0;
+  margin: 40px 0;
+  position: relative;
+}
+.servDiv .overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background-image: linear-gradient(var(--primary-color) 80%, var(--dark-color));
+  z-index: 0;
+  transition: all 0.3s ease-in-out;
 }
 
 .servFlex {
   justify-content: space-around;
   padding: 30px 0;
   border-bottom: solid 1px var(--dark-color);
+  position: relative;
+  z-index: 1;
 }
 .servFlex .num {
   color: var(--dark-color);
@@ -413,6 +434,9 @@ header.active .logo {
   cursor: pointer;
   max-width: 550px;
   margin: auto;
+}
+.work .content {
+  display: none;
 }
 .work .primary-btn {
   position: absolute;
@@ -627,6 +651,82 @@ textarea:focus {
   color: var(--dark-color);
 }
 
+.custModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9991;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: 100px 0 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.custModal .content {
+  background-color: var(--invert-color);
+  padding: 30px;
+  border-radius: 30px;
+  max-height: 100%;
+  overflow: auto;
+  box-shadow: 0 0 10px 2px var(--default-color);
+}
+.custModal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.custModal .closeModal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 15px;
+  font-size: 30px;
+  background-image: linear-gradient(to right, var(--invert-color), var(--dark-color), var(--invert-color));
+  background-size: 200%;
+  background-position: left;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.custModal .closeModal:hover {
+  background-position: right;
+}
+
+.prtSwiper {
+  width: 80% !important;
+  max-width: 400px;
+  margin: auto;
+}
+.prtSwiper .swiper-slide {
+  border-radius: 30px;
+  box-shadow: 0 0 10px 2px var(--default-color);
+}
+.prtSwiper img {
+  width: 100%;
+  aspect-ratio: 1/1.5;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.prtFlex {
+  overflow: auto;
+  height: calc(100vh - 130px);
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.fixedEle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
 @media (max-width: 992px) {
   .panel {
     padding-top: 50px;
@@ -724,6 +824,10 @@ textarea:focus {
   }
   .mainNav li a:hover {
     background-color: var(--primary-color);
+  }
+  .custModal .content {
+    max-height: none;
+    margin-top: 50px;
   }
 }
 @media (max-width: 767px) {
