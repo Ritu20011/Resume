@@ -436,7 +436,6 @@ $(document).ready(function () {
 
             
             function fetchSecretKey() {
-                console.log('dekeche');
                 fetch('js/secret.json')
                     .then(response => {
                         if (!response.ok) {
@@ -445,10 +444,8 @@ $(document).ready(function () {
                         return response.json();
                     })
                     .then(data => {
-                        
-                        const secretKey = data.secretKey;
-                        console.log('Secret Key:', secretKey);
-                        return secretKey;
+                        console.log(data);
+                        return data.secretKey;
                     })
                     .catch(error => {
                         console.error('Fetch error:', error);
