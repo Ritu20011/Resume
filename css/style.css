@@ -31,13 +31,40 @@
   --dark-color: #3D9443;
 }
 
-body.dark {
+body.lightSky {
+  --default-color: #000;
+  --invert-color: #fff;
+  --primary-color: #b9f5f5;
+  --secondary-color: #c0f8f8;
+  --light-color: #e3fdfd;
+  --dark-color: #4bdfdf;
+}
+
+body.lightviolet {
+  --default-color: #000;
+  --invert-color: #fff;
+  --primary-color: #FFE6E6;
+  --secondary-color: #E1AFD1;
+  --light-color: #FFE6E6;
+  --dark-color: #7469B6;
+}
+
+body.darkSky {
   --default-color: #fff;
   --invert-color: #000;
   --primary-color: #618383;
   --secondary-color: #E3F4F4;
   --light-color: #097474;
   --dark-color: #b3f8f8;
+}
+
+body.darkOrg {
+  --default-color: #fff;
+  --invert-color: #000;
+  --primary-color: #FFBF78;
+  --secondary-color: #FFEEA9;
+  --light-color: #FF9855;
+  --dark-color: #f9fc63;
 }
 
 * {
@@ -51,8 +78,7 @@ body {
   color: var(--default-color);
 }
 body.active {
-  position: fixed;
-  width: 100%;
+  overflow: hidden;
 }
 
 img {
@@ -243,6 +269,29 @@ h2 .ico,
   transform: scale(1);
 }
 
+.stick-btn {
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  box-shadow: inset 0 0 0 5px var(--primary-color);
+  padding: 5px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  flex-wrap: wrap;
+  transition: all 0.3s ease-in-out;
+}
+.stick-btn:hover {
+  background-color: var(--invert-color);
+}
+
 .panel {
   padding-top: 70px;
   padding-bottom: 70px;
@@ -312,6 +361,10 @@ header.active .logo {
   margin: 0;
   padding: 0;
   list-style-type: none;
+  overflow: hidden;
+}
+.mainNav li {
+  overflow: hidden;
 }
 .mainNav li a {
   position: relative;
@@ -324,9 +377,10 @@ header.active .logo {
 }
 .actDetect .navActive {
   position: absolute;
+  bottom: 0;
   left: 0;
   width: 0;
-  height: 5px;
+  height: 2px;
   background-image: linear-gradient(to right, var(--dark-color), var(--default-color));
   transition: all 0.3s ease-in-out;
   transition-timing-function: linear;
@@ -405,7 +459,7 @@ header.active .logo {
 
 .servFlex {
   justify-content: space-around;
-  padding: 30px 0;
+  padding: 30px 20px;
   border-bottom: solid 1px var(--dark-color);
   position: relative;
   z-index: 1;
@@ -723,10 +777,137 @@ textarea:focus {
 
 .fixedEle {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  right: 10px;
+  bottom: 0;
+  z-index: 1;
 }
 
+.scrollTop {
+  opacity: 0;
+  visibility: collapse;
+  max-height: 0;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+}
+.scrollTop.active {
+  opacity: 1;
+  visibility: visible;
+  max-height: 50px;
+}
+.scrollTop .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.scrollTop .arrDiv {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  box-shadow: none;
+}
+
+.colorPicker {
+  position: relative;
+}
+.colorPicker .swatches {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(var(--primary-color), var(--invert-color));
+  border-radius: 30px 30px 0;
+  box-sizing: border-box;
+  transform: translate(-95%, -95%);
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  box-shadow: 0 0 5px var(--default-color);
+}
+.colorPicker .picker.active {
+  background-color: var(--invert-color);
+}
+.colorPicker .swDiv {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.colorPicker .swatch {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  border-radius: 50%;
+  overflow: hidden;
+  outline: solid 2px var(--default-color);
+  cursor: pointer;
+}
+.colorPicker .swatch .left,
+.colorPicker .swatch .right {
+  width: 100%;
+}
+.colorPicker .swatch.active {
+  box-shadow: 0 0 5px 5px var(--dark-color);
+}
+.colorPicker .swatch.lightGreen .left {
+  background-color: #E0FBE2;
+}
+.colorPicker .swatch.lightGreen .right {
+  background-color: #3D9443;
+}
+.colorPicker .swatch.lightSky .left {
+  background-color: #e3fdfd;
+}
+.colorPicker .swatch.lightSky .right {
+  background-color: #4bdfdf;
+}
+.colorPicker .swatch.lightviolet .left {
+  background-color: #FFE6E6;
+}
+.colorPicker .swatch.lightviolet .right {
+  background-color: #7469B6;
+}
+.colorPicker .swatch.darkSky .left {
+  background-color: #097474;
+}
+.colorPicker .swatch.darkSky .right {
+  background-color: #b3f8f8;
+}
+.colorPicker .swatch.darkOrg .left {
+  background-color: #FF9855;
+}
+.colorPicker .swatch.darkOrg .right {
+  background-color: #f9fc63;
+}
+
+@keyframes colorSwatchActive {
+  to {
+    width: 200px;
+    height: 100px;
+  }
+  from {
+    width: 0;
+    height: 0;
+  }
+}
+@keyframes colorSwatch {
+  to {
+    width: 0;
+    height: 0;
+  }
+  from {
+    width: 200px;
+    height: 100px;
+  }
+}
 @media (max-width: 992px) {
   .panel {
     padding-top: 50px;

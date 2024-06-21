@@ -30,7 +30,7 @@ $red: #f00;
     }
 }
 
-$light-theme: ( // toggler
+$lightGreen-theme: ( // toggler
     default-color: #000,
     invert-color: #fff,
     primary-color: #B0EBB4,
@@ -39,25 +39,25 @@ $light-theme: ( // toggler
     dark-color: #3D9443,
 );
 
-// $light-theme: ( // toggler
-//     default-color: #000,
-//     invert-color: #fff,
-//     primary-color: #b9f5f5,
-//     secondary-color: #c0f8f8,
-//     light-color: #e3fdfd,
-//     dark-color: #4bdfdf,
-// );
+$lightSky-theme: ( // toggler
+    default-color: #000,
+    invert-color: #fff,
+    primary-color: #b9f5f5,
+    secondary-color: #c0f8f8,
+    light-color: #e3fdfd,
+    dark-color: #4bdfdf,
+);
 
-// $light-theme: ( // toggler
-//     default-color: #000,
-//     invert-color: #fff,
-//     primary-color: #FFE6E6,
-//     secondary-color: #E1AFD1,
-//     light-color: #FFE6E6,
-//     dark-color: #7469B6,
-// );
+$lightviolet-theme: ( // toggler
+    default-color: #000,
+    invert-color: #fff,
+    primary-color: #FFE6E6,
+    secondary-color: #E1AFD1,
+    light-color: #FFE6E6,
+    dark-color: #7469B6,
+);
 
-$dark-theme: ( // toggler
+$darkSky-theme: ( // toggler
     default-color: #fff,
     invert-color: #000,
     primary-color: #618383,
@@ -66,14 +66,14 @@ $dark-theme: ( // toggler
     dark-color: #b3f8f8,
 );
 
-// $dark-theme: ( // toggler
-//     default-color: #fff,
-//     invert-color: #000,
-//     primary-color: #FFBF78,
-//     secondary-color: #FFEEA9,
-//     light-color: #FF9855,
-//     dark-color: #FBFE7E,
-// );
+$darkOrg-theme: ( // toggler
+    default-color: #fff,
+    invert-color: #000,
+    primary-color: #FFBF78,
+    secondary-color: #FFEEA9,
+    light-color: #FF9855,
+    dark-color: #f9fc63,
+);
 
 // $dark-theme: (light-color: #ffa958,
 //     dark-color: #fd4800,
@@ -90,12 +90,24 @@ $dark-theme: ( // toggler
 
 // Apply the light theme by default
 :root {
-    @include theme-variables($light-theme);
+    @include theme-variables($lightGreen-theme);
 }
 
 // Apply the dark theme when the body has the class "dark"
-body.dark {
-    @include theme-variables($dark-theme);
+body.lightSky {
+    @include theme-variables($lightSky-theme);
+}
+
+body.lightviolet {
+    @include theme-variables($lightviolet-theme);
+}
+
+body.darkSky {
+    @include theme-variables($darkSky-theme);
+}
+
+body.darkOrg {
+    @include theme-variables($darkOrg-theme);
 }
 
 
@@ -112,6 +124,16 @@ body.dark {
     transition: all $time ease-in-out;
 }
 
+@mixin swatch-colors($left-color, $right-color) {
+    .left {
+        background-color: $left-color;
+    }
+
+    .right {
+        background-color: $right-color;
+    }
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -121,9 +143,9 @@ body {
     font-family: "Roboto Condensed", sans-serif;
     font-size: var(--font-18);
     color: var(--default-color);
-    &.active{
-        position: fixed;
-        width: 100%;
+
+    &.active {
+        overflow: hidden;
     }
 }
 
@@ -311,6 +333,25 @@ h2,
     }
 }
 
+.stick-btn {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    // border: solid 5px var(--primary-color);
+    box-shadow: inset 0 0 0 5px var(--primary-color);
+    padding: 5px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    @include flex();
+    @include trans();
+
+    &:hover {
+        background-color: var(--invert-color);
+    }
+}
+
 .panel {
     padding-top: 70px;
     padding-bottom: 70px;
@@ -380,6 +421,11 @@ header.active {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    overflow: hidden;
+
+    li {
+        overflow: hidden;
+    }
 
     li {
         a {
@@ -398,10 +444,10 @@ header.active {
 
     .navActive {
         position: absolute;
-        // bottom: 0;
+        bottom: 0;
         left: 0;
         width: 0;
-        height: 5px;
+        height: 2px;
         background-image: linear-gradient(to right, var(--dark-color), var(--default-color));
         @include trans();
         transition-timing-function: linear;
@@ -477,7 +523,7 @@ header.active {
 
 .servFlex {
     justify-content: space-around;
-    padding: 30px 0;
+    padding: 30px 20px;
     border-bottom: solid 1px var(--dark-color);
     position: relative;
     z-index: 1;
@@ -780,15 +826,161 @@ textarea:focus {
     padding: 10px;
 }
 
-.fixedEle{
+.fixedEle {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    right: 10px;
+    bottom: 0;
+    z-index: 1;
 }
-.scrollTop{
+
+.scrollTop {
+    opacity: 0;
+    visibility: collapse;
+    max-height: 0;
+    @include trans();
+    overflow: hidden;
+    position: relative;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        max-height: 50px;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .arrDiv {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        box-shadow: none;
+    }
+}
+
+.colorPicker {
+    position: relative;
+
+    // .swatches {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     background-color: var(--primary-color);
+    //     border-radius: 30px 30px 0;
+    //     transition: all 0.3s ease-in-out;
+    //     transform: translate(0);
+    //     opacity: 0;
+    //     visibility: hidden;
+
+    //     &.active {
+    //         transform: translate(-95%, -95%);
+    //         opacity: 1;
+    //         visibility: visible;
+    //     }
+    // }
+
+    .swatches {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(var(--primary-color), var(--invert-color));
+        border-radius: 30px 30px 0;
+        box-sizing: border-box;
+        transform: translate(-95%, -95%);
+        overflow: hidden;
+        width: 0;
+        height: 0;
+        box-shadow: 0 0 5px var(--default-color);
+    }
+
+    .picker {
+        &.active {
+            background-color: var(--invert-color);
+        }
+    }
+
+    .swDiv {
+        width: 200px;
+        height: 100px;
+        padding: 20px;
+        @include flex(space-between);
+        flex-wrap: wrap;
+    }
+
+    .swatch {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        border-radius: 50%;
+        overflow: hidden;
+        outline: solid 2px var(--default-color);
+        cursor: pointer;
+
+        .left,
+        .right {
+            width: 100%;
+        }
+
+        &.active {
+            box-shadow: 0 0 5px 5px var(--dark-color);
+        }
+
+        &.lightGreen {
+            @include swatch-colors(#E0FBE2, #3D9443);
+        }
+
+        &.lightSky {
+            @include swatch-colors(#e3fdfd, #4bdfdf);
+        }
+
+        &.lightviolet {
+            @include swatch-colors(#FFE6E6, #7469B6);
+        }
+
+        &.darkSky {
+            @include swatch-colors(#097474, #b3f8f8);
+        }
+
+        &.darkOrg {
+            @include swatch-colors(#FF9855, #f9fc63);
+        }
+    }
+
 
 }
 
+
+
+@keyframes colorSwatchActive {
+    to {
+        width: 200px;
+        height: 100px;
+    }
+
+    from {
+        width: 0;
+        height: 0;
+    }
+
+}
+
+@keyframes colorSwatch {
+    to {
+        width: 0;
+        height: 0;
+    }
+
+    from {
+        width: 200px;
+        height: 100px;
+    }
+
+}
 
 // media start
 
