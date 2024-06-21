@@ -950,7 +950,14 @@ textarea:focus {
             @include swatch-colors(#FF9855, #f9fc63);
         }
     }
-
+.delete{
+    cursor: pointer;
+    color: var(--default-color);
+    border-radius: 50%;
+    &:hover{
+        box-shadow: 0 0 5px 5px var(--dark-color);
+    }
+}
 
 }
 

@@ -137,7 +137,7 @@ $(document).ready(function () {
             // Add the active class to the corresponding swatch
             $('.swatch.' + storedColor).addClass('active');
         }else{
-            console.log('bla bla bla')
+            console.log('hello')
         }
         $('.delete').click(function(){
             // Delete the "selectedColor" cookie immediately after checking it

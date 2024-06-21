@@ -887,6 +887,14 @@ textarea:focus {
 .colorPicker .swatch.darkOrg .right {
   background-color: #f9fc63;
 }
+.colorPicker .delete {
+  cursor: pointer;
+  color: var(--default-color);
+  border-radius: 50%;
+}
+.colorPicker .delete:hover {
+  box-shadow: 0 0 5px 5px var(--dark-color);
+}
 
 @keyframes colorSwatchActive {
   to {
