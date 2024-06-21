@@ -434,12 +434,35 @@ $(document).ready(function () {
                 });
             }
 
+            
+            function fetchSecretKey() {
+                console.log('dekeche');
+                fetch('js/secret.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        
+                        const secretKey = data.secretKey;
+                        console.log('Secret Key:', secretKey);
+                        return secretKey;
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                    });
+            }
+
+            fetchSecretKey();
+
             // Loop through repositories array
             repositories.forEach(({
                 owner,
                 repo
             }) => {
-                const token = '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'; // Optional for public repos
+                const token = fetchSecretKey(); // Optional for public repos
                 const githubPagesUrl = `https://${owner.toLowerCase()}.github.io/${repo}/`;
 
                 fetchRepoLanguages(owner, repo, token)
