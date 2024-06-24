@@ -488,6 +488,16 @@ header.active .logo {
   cursor: pointer;
   max-width: 550px;
   margin: auto;
+  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform: scale(0);
+  opacity: 0;
+  display: none;
+}
+.work.active {
+  transform: scale(1);
+  opacity: 1;
+  display: block;
 }
 .work .content {
   display: none;
@@ -530,6 +540,42 @@ header.active .logo {
      object-fit: cover;
   -o-object-position: top;
      object-position: top;
+  transition: all 0.3s ease-in-out;
+}
+
+.filterList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  flex-wrap: wrap;
+  -moz-column-gap: 0;
+       column-gap: 0;
+  row-gap: 0;
+  background-color: var(--primary-color);
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  margin-top: 40px;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  padding: 5px;
+}
+.filterList .filterItem {
+  padding: 10px 40px;
+  font-weight: 700;
+  z-index: 1;
+  cursor: pointer;
+}
+.filterList .active {
+  background-image: linear-gradient(to right, var(--invert-color), var(--dark-color));
+  border-radius: 999px;
+  position: absolute;
+  border-radius: 999px;
+  box-shadow: 0 0 4px 0px var(--default-color);
   transition: all 0.3s ease-in-out;
 }
 
@@ -1034,4 +1080,45 @@ textarea:focus {
   .topMail {
     display: none;
   }
+}
+body {
+  overflow-X: hidden;
+}
+
+.mine, .child3, .child2, .child1, .child {
+  width: 50vw;
+  aspect-ratio: 1/1;
+  background-image: radial-gradient(var(--secondary-color) 20%, transparent, transparent);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.child {
+  transition: all 0.4s ease-in-out;
+  width: 40vw;
+}
+
+.child1 {
+  transition: all 0.6s ease-in-out;
+  width: 30vw;
+}
+
+.child2 {
+  transition: all 0.8s ease-in-out;
+  width: 20vw;
+}
+
+.child3 {
+  transition: all 0.1s ease-in-out;
+  width: 10vw;
+}
+
+header, .container-lg, .container, footer {
+  position: relative;
+  z-index: 1;
 }/*# sourceMappingURL=style.css.map */

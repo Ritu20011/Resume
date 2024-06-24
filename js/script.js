@@ -77,7 +77,7 @@ $(document).ready(function () {
             }
             document.cookie = name + "=" + encodeURIComponent(value || "") + expires + "; path=/";
         }
-    
+
         // Function to get a cookie
         function getCookie(name) {
             var nameEQ = name + "=";
@@ -93,53 +93,53 @@ $(document).ready(function () {
             }
             return null;
         }
-    
+
         // Function to delete a cookie
         function deleteCookie(name) {
             document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         }
-    
+
         // Event handler for clicking on color swatches
         $('.swatch').click(function () {
             // Remove active class from all swatches
             $('.swatch').removeClass('active');
-    
+
             // Add active class to the clicked swatch
             $(this).addClass('active');
-    
+
             // Get the classes of the clicked swatch
             var classList = Array.from(this.classList);
-            
+
             // Filter out unwanted classes (like "swatch" and "active")
             var filteredClasses = classList.filter(function (className) {
                 return className !== "swatch" && className !== "active";
             });
-    
+
             // Set the body class to the filtered classes
             $('body').removeClass();
             $('body').addClass(filteredClasses);
-    
+
             // Log the filtered classes to the console (for debugging)
             console.log(filteredClasses);
-    
+
             // Set a cookie with the selected color class
             if (filteredClasses.length > 0) {
                 setCookie("selectedColor", filteredClasses[0], 7); // Set cookie to expire in 7 days
             }
         });
-    
+
         // Check if there's a previously selected color stored in a cookie
         var storedColor = getCookie("selectedColor");
         if (storedColor) {
             // Apply the stored color to the body
             $('body').addClass(storedColor);
-    
+
             // Add the active class to the corresponding swatch
             $('.swatch.' + storedColor).addClass('active');
-        }else{
+        } else {
             console.log('hello')
         }
-        $('.delete').click(function(){
+        $('.delete').click(function () {
             console.log('Before delete: ', document.cookie);
 
             // Delete the "selectedColor" cookie immediately after checking it
@@ -148,8 +148,8 @@ $(document).ready(function () {
             console.log('After delete: ', document.cookie);
         })
     }
-    
-    
+
+
 
     // Update the header link
     function updateActiveLink() {
@@ -251,12 +251,116 @@ $(document).ready(function () {
 
 
 
+    
+
+function filterActive() {
+    var activeEle = $('.filterItem.filterNavAct').attr('filter-nav');
+    var activeHead = $('[filter-nav="' + activeEle + '"]');
+    var filterHeight = $(activeHead).outerHeight();
+    var filterWidth = $(activeHead).outerWidth();
+    var filterTop = $(activeHead).position().top;
+    var filterLeft = $(activeHead).position().left;
+    console.log(activeEle);
+    console.log(activeHead);
+    // Correct the syntax for setting CSS properties
+    $('.filterList .active').css({
+        width: filterWidth,
+        height: filterHeight,
+        top: filterTop,
+        left: filterLeft
+    });
+}
+
+// function 
+
+$('.filterItem').click(function () {
+    $('.filterItem').removeClass('filterNavAct');
+    $(this).addClass('filterNavAct');
+    var filterHead = $(this).attr('filter-nav');
+
+    filterActive();
+
+    if (filterHead === "all") {
+        $('.work').removeClass('active');
+        $('.work').addClass('active');
+    } else {
+        $('.work').removeClass('active');
+        $('.work[filter-item="' + filterHead + '"]').addClass('active');
+    }
+});
+
+var firstFilter = $('.filterItem[filter-nav="all"]');
+if (firstFilter.length) {
+    $('.filterItem').removeClass('filterNavAct');
+    firstFilter.addClass('filterNavAct');
+    filterActive();
+    $('.work').removeClass('active');
+    $('.work').addClass('active');
+}
+
+    // $(document).mousemove(function(e) {
+    //     var mouseX = e.pageX;
+    //     var mouseY = e.pageY;
+
+    //     // Move main element `.mine` with the mouse
+    //     $('.mine').css({
+    //         'left': mouseX + 'px',
+    //         'top': mouseY - 50 + 'px' // Adjusted top position
+    //     });
+
+    //     // Loop to append and animate child elements
+    //     for (var i = 0; i < 4; i++) {
+    //         // Calculate width for current child element
+    //         var width = (1 + i) * 10 + 'vw'; // Starts from 40vw and decreases by 10vw each time
+    //         var trans = (4 - i) / 5 + 's'; // Starts from 40vw and decreases by 10vw each time
+
+    //         // Create a new child element
+    //         var newChild = $('<div class="child"></div>');
+    //         $('.mine').after(newChild);
+    //         newChild.css({
+    //             'left': mouseX + 'px',
+    //             'top': mouseY - 50 + 'px', // Adjusted top position
+    //             'width': width,
+    //             'transition-duration': trans
+    //         });
+    //         // Animate the new child element to gradually become smaller
+    //         newChild.remove();
+    //     }
+    // });
+
+    $(document).mousemove(function(e) {
+            var mouseX = e.pageX;
+            var mouseY = e.pageY;
+    
+            // Move main element `.mine` with the mouse
+            $('.mine').css({
+                'left': mouseX + 'px',
+                'top': mouseY - 50 + 'px' // Adjusted top position
+            });
+            $('.child').css({
+                'left': mouseX + 'px',
+                'top': mouseY - 50 + 'px' // Adjusted top position
+            });
+            $('.child1').css({
+                'left': mouseX + 'px',
+                'top': mouseY - 50 + 'px' // Adjusted top position
+            });
+            $('.child2').css({
+                'left': mouseX + 'px',
+                'top': mouseY - 50 + 'px' // Adjusted top position
+            });
+            $('.child3').css({
+                'left': mouseX + 'px',
+                'top': mouseY - 50 + 'px' // Adjusted top position
+            });
+        })
 
     // implementation of functions
     var firstServFlex = $('.servFlex').first();
     if (firstServFlex.length) {
         mouseEnter.call(firstServFlex[0]);
     }
+
     hoverEffect();
     stickyHeader();
     updateActiveLink();
@@ -278,6 +382,10 @@ $(document).ready(function () {
 
     // resizing effects
     $(window).resize(function () {
+        if (firstServFlex.length) {
+            mouseEnter.call(firstServFlex[0]);
+        }
+        filterActive();
         stickyHeader();
         updateActiveLink();
         activeNav();
@@ -437,7 +545,7 @@ $(document).ready(function () {
                 });
             }
 
-            
+
             function fetchSecretKey() {
                 fetch('js/secret.json')
                     .then(response => {
