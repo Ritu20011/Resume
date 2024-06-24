@@ -140,9 +140,12 @@ $(document).ready(function () {
             console.log('hello')
         }
         $('.delete').click(function(){
+            console.log('Before delete: ', document.cookie);
+
             // Delete the "selectedColor" cookie immediately after checking it
             deleteCookie("selectedColor");
             window.location.reload();
+            console.log('After delete: ', document.cookie);
         })
     }
     
