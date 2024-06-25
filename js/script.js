@@ -251,52 +251,52 @@ $(document).ready(function () {
 
 
 
-    
 
-function filterActive() {
-    var activeEle = $('.filterItem.filterNavAct').attr('filter-nav');
-    var activeHead = $('[filter-nav="' + activeEle + '"]');
-    var filterHeight = $(activeHead).outerHeight();
-    var filterWidth = $(activeHead).outerWidth();
-    var filterTop = $(activeHead).position().top;
-    var filterLeft = $(activeHead).position().left;
-    console.log(activeEle);
-    console.log(activeHead);
-    // Correct the syntax for setting CSS properties
-    $('.filterList .active').css({
-        width: filterWidth,
-        height: filterHeight,
-        top: filterTop,
-        left: filterLeft
+
+    function filterActive() {
+        var activeEle = $('.filterItem.filterNavAct').attr('filter-nav');
+        var activeHead = $('[filter-nav="' + activeEle + '"]');
+        var filterHeight = $(activeHead).outerHeight();
+        var filterWidth = $(activeHead).outerWidth();
+        var filterTop = $(activeHead).position().top;
+        var filterLeft = $(activeHead).position().left;
+        console.log(activeEle);
+        console.log(activeHead);
+        // Correct the syntax for setting CSS properties
+        $('.filterList .active').css({
+            width: filterWidth,
+            height: filterHeight,
+            top: filterTop,
+            left: filterLeft
+        });
+    }
+
+    // function 
+
+    $('.filterItem').click(function () {
+        $('.filterItem').removeClass('filterNavAct');
+        $(this).addClass('filterNavAct');
+        var filterHead = $(this).attr('filter-nav');
+
+        filterActive();
+
+        if (filterHead === "all") {
+            $('.work').removeClass('active');
+            $('.work').addClass('active');
+        } else {
+            $('.work').removeClass('active');
+            $('.work[filter-item="' + filterHead + '"]').addClass('active');
+        }
     });
-}
 
-// function 
-
-$('.filterItem').click(function () {
-    $('.filterItem').removeClass('filterNavAct');
-    $(this).addClass('filterNavAct');
-    var filterHead = $(this).attr('filter-nav');
-
-    filterActive();
-
-    if (filterHead === "all") {
+    var firstFilter = $('.filterItem[filter-nav="all"]');
+    if (firstFilter.length) {
+        $('.filterItem').removeClass('filterNavAct');
+        firstFilter.addClass('filterNavAct');
+        filterActive();
         $('.work').removeClass('active');
         $('.work').addClass('active');
-    } else {
-        $('.work').removeClass('active');
-        $('.work[filter-item="' + filterHead + '"]').addClass('active');
     }
-});
-
-var firstFilter = $('.filterItem[filter-nav="all"]');
-if (firstFilter.length) {
-    $('.filterItem').removeClass('filterNavAct');
-    firstFilter.addClass('filterNavAct');
-    filterActive();
-    $('.work').removeClass('active');
-    $('.work').addClass('active');
-}
 
     // $(document).mousemove(function(e) {
     //     var mouseX = e.pageX;
@@ -328,32 +328,50 @@ if (firstFilter.length) {
     //     }
     // });
 
-    $(document).mousemove(function(e) {
-            var mouseX = e.pageX;
-            var mouseY = e.pageY;
-    
-            // Move main element `.mine` with the mouse
-            $('.mine').css({
-                'left': mouseX + 'px',
-                'top': mouseY - 50 + 'px' // Adjusted top position
-            });
-            $('.child').css({
-                'left': mouseX + 'px',
-                'top': mouseY - 50 + 'px' // Adjusted top position
-            });
-            $('.child1').css({
-                'left': mouseX + 'px',
-                'top': mouseY - 50 + 'px' // Adjusted top position
-            });
-            $('.child2').css({
-                'left': mouseX + 'px',
-                'top': mouseY - 50 + 'px' // Adjusted top position
-            });
-            $('.child3').css({
-                'left': mouseX + 'px',
-                'top': mouseY - 50 + 'px' // Adjusted top position
-            });
-        })
+    // $(document).mousemove(function(e) {
+    //         var mouseX = e.pageX;
+    //         var mouseY = e.pageY;
+
+    //         // Move main element `.mine` with the mouse
+    //         $('.mine').css({
+    //             'left': mouseX + 'px',
+    //             'top': mouseY + 'px' // Adjusted top position
+    //         });
+    //         $('.child').css({
+    //             'left': mouseX + 'px',
+    //             'top': mouseY + 'px' // Adjusted top position
+    //         });
+    //         $('.child1').css({
+    //             'left': mouseX + 'px',
+    //             'top': mouseY + 'px' // Adjusted top position
+    //         });
+    //         $('.child2').css({
+    //             'left': mouseX + 'px',
+    //             'top': mouseY + 'px' // Adjusted top position
+    //         });
+    //         $('.child3').css({
+    //             'left': mouseX + 'px',
+    //             'top': mouseY + 'px' // Adjusted top position
+    //         });
+    //     })
+
+    const $ball = $('.ball');
+
+    function getRandomPosition() {
+        const maxWidth = $(window).width() - $ball.width();
+        const maxHeight = $(window).height() - $ball.height();
+        const randomX = Math.floor(Math.random() * maxWidth);
+        const randomY = Math.floor(Math.random() * maxHeight);
+        return { x: randomX, y: randomY };
+    }
+
+    function moveBall() {
+        const { x, y } = getRandomPosition();
+        $ball.css({ left: x + 'px', top: y + 'px' });
+        setTimeout(moveBall, 2000); // Recursively call moveBall after the transition duration
+    }
+
+    moveBall(); // Initial call to start the movement
 
     // implementation of functions
     var firstServFlex = $('.servFlex').first();
