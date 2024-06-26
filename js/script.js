@@ -298,35 +298,6 @@ $(document).ready(function () {
         $('.work').addClass('active');
     }
 
-    // $(document).mousemove(function(e) {
-    //     var mouseX = e.pageX;
-    //     var mouseY = e.pageY;
-
-    //     // Move main element `.mine` with the mouse
-    //     $('.mine').css({
-    //         'left': mouseX + 'px',
-    //         'top': mouseY - 50 + 'px' // Adjusted top position
-    //     });
-
-    //     // Loop to append and animate child elements
-    //     for (var i = 0; i < 4; i++) {
-    //         // Calculate width for current child element
-    //         var width = (1 + i) * 10 + 'vw'; // Starts from 40vw and decreases by 10vw each time
-    //         var trans = (4 - i) / 5 + 's'; // Starts from 40vw and decreases by 10vw each time
-
-    //         // Create a new child element
-    //         var newChild = $('<div class="child"></div>');
-    //         $('.mine').after(newChild);
-    //         newChild.css({
-    //             'left': mouseX + 'px',
-    //             'top': mouseY - 50 + 'px', // Adjusted top position
-    //             'width': width,
-    //             'transition-duration': trans
-    //         });
-    //         // Animate the new child element to gradually become smaller
-    //         newChild.remove();
-    //     }
-    // });
 
     // $(document).mousemove(function(e) {
     //         var mouseX = e.pageX;
@@ -629,7 +600,7 @@ $(document).ready(function () {
                     // Append remaining content and GitHub link
                     customContent += `
                             <div class="head">Website Link</div>
-                            <a href="${githubPagesUrl}">${githubPagesUrl}</a>
+                            <a href="${githubPagesUrl}" target="_blank">${githubPagesUrl}</a>
                         </div>
                     </div>
                 </div>
