@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         if (checkVal === true) {
             var email = 'ritu.basak01@gmail.com';
-            var subject = 'Subject Here';
+            var subject = $('#selPro').val();;
             var fullName = $('#fname').val() + ' ' + $('#lname').val();
             var senderEmail = $('#email').val();
             var num = $('#num').val();
@@ -282,10 +282,14 @@ $(document).ready(function () {
 
         if (filterHead === "all") {
             $('.work').removeClass('active');
+            $('.work').fadeOut();
             $('.work').addClass('active');
+            $('.work').fadeIn();
         } else {
             $('.work').removeClass('active');
+            $('.work').fadeOut();
             $('.work[filter-item="' + filterHead + '"]').addClass('active');
+            $('.work[filter-item="' + filterHead + '"]').fadeIn(1000);
         }
     });
 
@@ -342,7 +346,7 @@ $(document).ready(function () {
         setTimeout(moveBall, 2000); // Recursively call moveBall after the transition duration
     }
 
-    moveBall(); // Initial call to start the movement
+    // moveBall(); // Initial call to start the movement
 
     // implementation of functions
     var firstServFlex = $('.servFlex').first();
@@ -505,7 +509,6 @@ $(document).ready(function () {
 
 
         if (custContent.length === 0) {
-
             customContent += `
 <div class="col-lg-6 content">
     

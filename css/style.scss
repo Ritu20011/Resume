@@ -555,17 +555,16 @@ header.active {
     max-width: 550px;
     margin: auto;
     @include trans();
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    transform: scale(0);
-    opacity: 0;
-    display: none;
+    // transform: scale(0);
+    // opacity: 0;
+    // display: none;
     // visibility: collapse;
 
     &.active {
-        transform: scale(1);
-        opacity: 1;
+        // transform: scale(1);
+        // opacity: 1;
         // visibility: visible;
-        display: block;
+        // display: block;
     }
 
     .content {
@@ -659,7 +658,7 @@ header.active {
 
 .singleSkill {
     width: 100%;
-    max-width: 200px;
+    max-width: 150px;
     text-align: center;
 
     .iconDiv {
@@ -700,12 +699,15 @@ header.active {
 }
 
 input:not([type="submit"]),
-textarea {
+textarea,
+select {
     width: 100%;
     margin-bottom: 20px;
     padding: 10px 20px;
     border: solid 1px transparent;
     border-radius: 5px;
+    background: var(--invert-color);
+  color: var(--default-color);
 }
 
 input:not([type="submit"]):focus,
@@ -800,7 +802,7 @@ textarea:focus {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 9991;
@@ -1178,22 +1180,36 @@ textarea:focus {
     }
 }
 
-body{
+body {
     overflow-x: hidden;
 }
-header, footer, .container-lg, .container{
+
+header,
+footer,
+.container-lg,
+.container {
     z-index: 2;
     position: relative;
 }
-section{
+
+header {
+    z-index: 5;
+}
+
+section {
     position: relative;
 }
-.ball{
-    width: clamp(500px, 30vw, 300px);
+
+.ball {
+    width: clamp(800px, 30vw, 300px);
     aspect-ratio: 1/1;
     background-image: radial-gradient(var(--primary-color) 5%, transparent 70%, transparent);
     position: absolute;
     border-radius: 50%;
     z-index: 0;
     @include trans(5s);
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
