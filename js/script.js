@@ -662,8 +662,33 @@ $(document).ready(function () {
             alert('Vibration API is not supported by this browser');
         }
     }
+    function showNotification() {
+        if (!("Notification" in window)) {
+            alert("This browser does not support notifications.");
+        } else if (Notification.permission === "granted") {
+            // If permission is already granted, send notification
+            new Notification("Hello!", {
+                body: "This is a test notification.",
+                icon: "icon.png" // You can use any icon here
+            });
+            vibrateDevice();
+        } else if (Notification.permission === "default") {
+            // Request permission if the status is "default"
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    new Notification("Hello!", {
+                        body: "This is a test notification.",
+                        icon: "icon.png"
+                    });
+                    vibrateDevice();
+                }
+            });
+        } else {
+            alert("Notification permission denied.");
+        }
+    }
     $('.bannerImg').click(function(){
-        vibrateDevice();
+        showNotification();
     })
 
 
