@@ -655,3 +655,16 @@ $(document).ready(function () {
 
 
 });
+
+
+
+
+function vibrateDevice() {
+    if ('vibrate' in navigator) {
+        navigator.vibrate([200, 100, 200, 100, 200]);
+        console.log('Device vibrated with pattern');
+    } else {
+        console.log('Vibration API is not supported by this browser');
+    }
+}
+vibrateDevice();
