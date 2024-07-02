@@ -1097,7 +1097,7 @@ section {
 }
 
 .ball {
-  width: clamp(800px, 30vw, 300px);
+  width: clamp(300px, 70vw, 800px);
   aspect-ratio: 1/1;
   background-image: radial-gradient(var(--primary-color) 5%, transparent 70%, transparent);
   position: absolute;
