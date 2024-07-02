@@ -330,21 +330,21 @@ $(document).ready(function () {
     //         });
     //     })
 
-    const $ball = $('.ball');
+    // const $ball = $('.ball');
 
-    function getRandomPosition() {
-        const maxWidth = $(window).width() - $ball.width();
-        const maxHeight = $(window).height() - $ball.height();
-        const randomX = Math.floor(Math.random() * maxWidth);
-        const randomY = Math.floor(Math.random() * maxHeight);
-        return { x: randomX, y: randomY };
-    }
+    // function getRandomPosition() {
+    //     const maxWidth = $(window).width() - $ball.width();
+    //     const maxHeight = $(window).height() - $ball.height();
+    //     const randomX = Math.floor(Math.random() * maxWidth);
+    //     const randomY = Math.floor(Math.random() * maxHeight);
+    //     return { x: randomX, y: randomY };
+    // }
 
-    function moveBall() {
-        const { x, y } = getRandomPosition();
-        $ball.css({ left: x + 'px', top: y + 'px' });
-        setTimeout(moveBall, 2000); // Recursively call moveBall after the transition duration
-    }
+    // function moveBall() {
+    //     const { x, y } = getRandomPosition();
+    //     $ball.css({ left: x + 'px', top: y + 'px' });
+    //     setTimeout(moveBall, 2000); // Recursively call moveBall after the transition duration
+    // }
 
     // moveBall(); // Initial call to start the movement
 
