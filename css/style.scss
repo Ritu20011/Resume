@@ -51,7 +51,7 @@ $lightSky-theme: ( // toggler
 $lightviolet-theme: ( // toggler
     default-color: #000,
     invert-color: #fff,
-    primary-color: #FFE6E6,
+    primary-color: #f9d0d0,
     secondary-color: #E1AFD1,
     light-color: #FFE6E6,
     dark-color: #7469B6,
@@ -1213,3 +1213,73 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
+
+
+
+body {
+    background: salmon;
+  }
+  
+  .hero {
+    overflow: hidden;
+    height: 100vh;
+    //border: 2px solid pink;
+    position: relative;
+  }
+  
+  $aquarium-holder-offset: 0;
+  #aquarium-holder {
+    // background: blue;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+  #aquarium {
+    // background: green;
+    // border: 2px solid gold;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    
+   filter: url("#noise");
+    -webkit-filter: url('#noise');
+  }
+  
+  .fish {
+    width: 300px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    animation: animate-fish 10s linear infinite;
+  }
+  
+  @keyframes animate-fish {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(calc(100vw + 100%));
+    }
+  }
+  
+  .fish-2 {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 33%;
+    animation: animate-fish-2 10s linear infinite;
+  }
+  
+  @keyframes animate-fish-2 {
+    0% {
+      transform: translateX(calc(100vw + 100%));
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
