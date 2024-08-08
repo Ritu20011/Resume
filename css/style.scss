@@ -440,7 +440,6 @@ header.active {
 
 .actDetect {
     position: relative;
-    overflow: auto;
 
     .navActive {
         position: absolute;
@@ -1127,6 +1126,7 @@ textarea:focus {
         z-index: 999;
         padding: 70px 0px 30px;
         box-shadow: 0 0 10px 0 var(--default-color);
+        overflow: auto;
         @include trans();
     }
 

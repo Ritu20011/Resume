@@ -373,7 +373,6 @@ header.active .logo {
 
 .actDetect {
   position: relative;
-  overflow: auto;
 }
 .actDetect .navActive {
   position: absolute;
@@ -1036,6 +1035,7 @@ textarea:focus {
     z-index: 999;
     padding: 70px 0px 30px;
     box-shadow: 0 0 10px 0 var(--default-color);
+    overflow: auto;
     transition: all 0.3s ease-in-out;
   }
   .actDetect.active {
@@ -1166,8 +1166,4 @@ body {
   100% {
     transform: translateX(-100%);
   }
-}
-.bannerImg {
-  filter: url("#noise");
-  -webkit-filter: url("#noise");
 }/*# sourceMappingURL=style.css.map */

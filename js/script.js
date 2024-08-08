@@ -571,7 +571,7 @@ $(document).ready(function () {
                     })
                     .fail((err) => {
                         console.error(`Error fetching languages for ${repo}:`, err);
-                        customContent += `hi`;
+                        customContent += `Our site is coming soon! Get ready for an exciting new experience—stay tuned for updates!`;
                         $('.custModal').html(customContent);
 
                         // Initialize Swiper after appending the HTML
