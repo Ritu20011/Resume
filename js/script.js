@@ -427,6 +427,14 @@ $(document).ready(function () {
         $('body').removeClass('active');
         $('.custModal').removeClass('active');
     });
+    $('.custModal').click(function (e) {
+        if ($(e.target).is('.custModal')) {
+            $('body').removeClass('active');
+            $('.custModal').removeClass('active');
+        }
+    });
+    
+    
     // esc key
     $(document).keydown(function (event) {
         if (event.key === 'Escape') { // Check if the key pressed is Escape
@@ -687,7 +695,7 @@ $(document).ready(function () {
             alert("Notification permission denied.");
         }
     }
-    $('.bannerImg').click(function(){
+    $('.bannerImg').click(function () {
         showNotification();
     })
 
